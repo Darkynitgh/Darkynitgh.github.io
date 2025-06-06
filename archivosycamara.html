@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" class="light dark">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Archivos y Cámara</title>
+  <script src="js/registraServiceWorker.js"></script>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#fffbfe">
+  <link rel="icon" sizes="32x32" href="favicon.ico">
+  <link rel="manifest" href="site.webmanifest">
+  <script src="ungap/custom-elements.js"></script>
+  <script type="module" src="js/configura.js"></script>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/transicion_pestanas.css">
+  <style>
+    .contenido-centrado {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body style="padding-bottom: 5rem;">
+
+  <md-top-app-bar headline="headline">
+    <h1>Archivos y Cámara</h1>
+  </md-top-app-bar>
+
+  <div class="contenido-centrado">
+    <h1>Archivos y Cámara</h1>
+
+    <p><label>Foto de Móvil<br><input type="file" accept="image/*" capture="camera"></label></p>
+    <p><label>Video de Móvil<br><input type="file" accept="video/*" capture=""></label></p>
+    <p><label>Archivo<br><input type="file"></label></p>
+  </div>
+
+  <nav-bar></nav-bar>
+
+</body>
+
+</html>

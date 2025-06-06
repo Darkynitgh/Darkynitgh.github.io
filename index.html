@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" class="light dark">
+
+<head>
+  <meta charset="UTF-8">
+  <title>GPS</title>
+  <script src="js/registraServiceWorker.js"></script>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#fffbfe">
+  <link rel="icon" sizes="32x32" href="favicon.ico">
+  <link rel="manifest" href="site.webmanifest">
+  <script src="ungap/custom-elements.js"></script>
+  <script type="module" src="js/configura.js"></script>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/transicion_pestanas.css">
+  <style>
+    .gps-contenido {
+      text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body style="padding-bottom: 5rem;">
+
+  <md-top-app-bar headline="headline">
+    <h1>Geolocalización</h1>
+  </md-top-app-bar>
+
+  <div class="gps-contenido">
+    <h1 id="headline">GPS</h1>
+    <p><label>Latitud: <output id="latitud"></output></label></p>
+    <p><label>Longitud: <output id="longitud"></output></label></p>
+  </div>
+
+  <script>
+    navigator.geolocation.watchPosition(p => {
+      latitud.value = p.coords.latitude;
+      longitud.value = p.coords.longitude;
+    });
+  </script>
+
+  <nav-bar></nav-bar>
+
+</body>
+
+</html>

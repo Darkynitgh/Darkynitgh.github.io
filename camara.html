@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es" class="light dark">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cámara</title>
+  <script src="js/registraServiceWorker.js"></script>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#fffbfe">
+  <link rel="icon" sizes="32x32" href="favicon.ico">
+  <link rel="manifest" href="site.webmanifest">
+  <script src="ungap/custom-elements.js"></script>
+  <script type="module" src="js/configura.js"></script>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/transicion_pestanas.css">
+  <style>
+    .centrado {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    menu {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+    }
+    section {
+      display: inline-block;
+      text-align: center;
+      margin: 1rem;
+    }
+  </style>
+</head>
+
+<body style="padding-bottom: 5rem;">
+
+  <md-top-app-bar headline="headline">
+    <h1>Cámara</h1>
+  </md-top-app-bar>
+
+  <div class="centrado">
+    <h1 id="headline">Cámara</h1>
+    <p>Para grabar o capturar imagen, cliquea <strong>Inicia</strong>.</p>
+    <p>Para grabar por 5 segundos, cliquea <strong>Graba</strong> y luego <strong>Para</strong>.</p>
+    <p>Para capturar una imagen, cliquea <strong>Captura</strong>.</p>
+  </div>
+
+  <menu>
+    <li><button type="button" onclick="inicia()">Inicia</button></li>
+    <li><button type="button" onclick="graba()">Graba</button></li>
+    <li><button type="button" onclick="para();">Para</button></li>
+    <li><button type="button" onclick="captura()">Captura</button></li>
+  </menu>
+
+  <div class="centrado">
+    <section>
+      <h2>Preview</h2>
+      <video id="preview" width="160" height="120" autoplay muted></video>
+    </section>
+    <section>
+      <h2>Recording</h2>
+      <video id="recording" width="160" height="120" controls></video>
+      <p><a id="descarga">Descarga</a></p>
+      <div id="mensajes"></div>
+    </section>
+    <section>
+      <h2>Imagen</h2>
+      <canvas id="canvas" width="160" height="120"></canvas>
+      <p><a id="descargaImagen">Descarga</a></p>
+    </section>
+  </div>
+
+  <script>
+    let stream = null;
+    let TIEMPO_DE_GRABACION = 5000;
+    var context = canvas.getContext('2d');
+
+    async function inicia() {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        preview.srcObject = stream;
+        preview.captureStream = preview.captureStream || preview.mozCaptureStream;
+        await new Promise(resolve => preview.onplaying = resolve);
+      } catch (e) {
+        log(e.message);
+      }
+    }
+
+    async function graba() {
+      try {
+        const recordedChunks = await grabaClip(stream, TIEMPO_DE_GRABACION);
+        let recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
+        recording.src = URL.createObjectURL(recordedBlob);
+        descarga.href = recording.src;
+        descarga.download = "RecordedVideo.webm";
+        log("Grabados " + recordedBlob.size + " bytes de " + recordedBlob.type);
+      } catch (e) {
+        log(e.message);
+      }
+    }
+
+    function para() {
+      detiene(preview.srcObject);
+    }
+
+    function captura() {
+      context.drawImage(preview, 0, 0, 160, 120);
+      descargaImagen.href = canvas.toDataURL('image/jpeg');
+      descargaImagen.download = "imagen.jpg";
+    }
+
+    function grabaClip(stream, milisegundos) {
+      let recorder = new MediaRecorder(stream);
+      let data = [];
+      recorder.ondataavailable = event => data.push(event.data);
+      recorder.start();
+      log(recorder.state + " durante " + (milisegundos / 1000) + " segundos…");
+
+      let detenido = new Promise((resolve, reject) => {
+        recorder.onstop = resolve;
+        recorder.onerror = event => reject(event.name);
+      });
+
+      let grabado = espera(milisegundos).then(() => {
+        if (recorder.state === "recording") recorder.stop();
+      });
+
+      return Promise.all([detenido, grabado]).then(() => data);
+    }
+
+    function detiene(stream) {
+      stream.getTracks().forEach(track => track.stop());
+    }
+
+    function log(msg) {
+      mensajes.innerHTML += msg + "<br>";
+    }
+
+    function espera(milisegundos) {
+      return new Promise(resolve => setTimeout(resolve, milisegundos));
+    }
+  </script>
+
+  <nav-bar></nav-bar>
+
+</body>
+
+</html>
