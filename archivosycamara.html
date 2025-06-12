@@ -97,39 +97,39 @@
             padding: 1rem;
         }
 
-        .file-upload-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background-color: #ba98f7;
-            border-radius: 8px;
-            padding: 10px 15px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-            flex-wrap: wrap;
-        }
+      
+.file-upload-container {
+    display: flex;
+    flex-direction: column; /* Cambia a columna en móviles */
+    align-items: stretch; /* Ocupa todo el ancho */
+    gap: 8px;
+    background-color: #ba98f7;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
 
-        .file-upload-label {
-            flex: 0 0 130px;
-            font-weight: 600;
-            color: #000000;
-            white-space: normal;
-            font-size: 1.15rem;
-            user-select: none;
-        }
+.file-upload-label {
+    font-weight: 600;
+    color: #000000;
+    font-size: 1.15rem;
+    text-align: left; /* Alineación izquierda */
+    width: 100%;
+}
 
-        input[type="file"] {
-            flex: 0 0 160px;
-            cursor: pointer;
-            border: 2px solid #9C27B0;
-            border-radius: 6px;
-            padding: 6px 14px;
-            font-weight: 600;
-            color: #9C27B0;
-            background-color: #fff;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
+input[type="file"] {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    cursor: pointer;
+    border: 2px solid #9C27B0;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 0.9rem; /* Tamaño de fuente reducido */
+    font-weight: 600;
+    color: #9C27B0;
+    background-color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
         input[type="file"]:hover {
             background-color: #9C27B0;
             color: white;
@@ -148,6 +148,24 @@
             user-select: none;
             min-width: 80px;
         }
+        /* Estilos para pantallas más grandes (tablets/desktop) */
+@media (min-width: 768px) {
+    .file-upload-container {
+        flex-direction: row; /* Vuelve a fila en pantallas grandes */
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .file-upload-label {
+        flex: 0 0 130px;
+        text-align: right;
+    }
+    
+    input[type="file"] {
+        flex: 1;
+        min-width: 0; /* Permite que se reduzca */
+    }
+}
     </style>
 </head>
 
