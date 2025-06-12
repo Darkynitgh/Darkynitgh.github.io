@@ -3,100 +3,222 @@
 
 <head>
 
- <meta charset="UTF-8">
- <title>Ayuda - PWA con MD</title>
+  <meta charset="UTF-8">
+  <title>Ayuda - Geolocalización, Archivos y Cámara</title>
 
- <script src="js/registraServiceWorker.js"></script>
+  <script src="js/registraServiceWorker.js"></script>
 
- <meta name="viewport" content="width=device-width">
- <meta name="theme-color" content="#fffbfe">
- <link rel="icon" sizes="32x32" href="favicon.ico">
- <link rel="manifest" href="site.webmanifest">
- <script src="ungap/custom-elements.js"></script>
+  <meta name="viewport" content="width=device-width">
+  <meta name="theme-color" content="#fffbfe">
+  <link rel="icon" sizes="32x32" href="favicon.ico">
+  <link rel="manifest" href="site.webmanifest">
+  <script src="ungap/custom-elements.js"></script>
 
- <script type="module" src="js/configura.js"></script>
- <link rel="stylesheet" href="css/estilos.css">
- <link rel="stylesheet" href="css/transicion_completa.css">
+  <script type="module" src="js/configura.js"></script>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/transicion_pestanas.css">
 
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #fffbfe;
+      color: #333;
+      padding: 1rem;
+    }
+
+    header {
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    nav.nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .nav-bar a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      text-align: center;
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.3rem 0.5rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-bar a:hover,
+    .nav-bar a.active {
+      color: #5e35b1;
+    }
+
+    .nav-bar a.active::after {
+      content: "";
+      height: 2px;
+      background: #5e35b1;
+      width: 100%;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+    }
+
+    .material-symbols-rounded {
+      font-variation-settings: 'wght' 400;
+      font-size: 1.6rem;
+    }
+
+    .md-list {
+  background: #fffbfe;
+  color: black;
+}
+.md-list .headline {
+color: black;
+}
+a {
+    color: #121212;
+}
+
+  </style>
 </head>
 
 <body>
 
- <md-top-app-bar>
+  <header>
+    <h1>Ayuda</h1>
 
-  <h1>Ayuda</h1>
+    <nav class="nav-bar">
+      <a href="index.html">
+        <span class="material-symbols-rounded">home</span>
+        Inicio
+      </a>
+      <a href="archivos.html">
+        <span class="material-symbols-rounded">folder</span>
+        Archivos
+      </a>
+      <a href="camara.html">
+        <span class="material-symbols-rounded">camera_alt</span>
+        Cámara
+      </a>
+      <a href="ayuda.html" class="active">
+        <span class="material-symbols-rounded">help</span>
+        Ayuda
+      </a>
+    </nav>
+  </header>
 
- </md-top-app-bar>
 
- <main>
+  <main>
 
-  <ul class="md-list">
-   <li class="md-two-line">
-    <span class="headline">
-     Título
-    </span>
-    <span class="supporting">
-     Geolocalizacion con Material Design
-    </span>
-   </li>
-   <li class="md-two-line">
-    <span class="headline">
-     Descripción
-    </span>
-    <span class="supporting">
-      Esta aplicación es un ejemplo de una PWA que usa Material Design y
-      Geolocalización. Permite capturar imágenes y grabar videos desde la cámara del dispositivo.
-      <br>
-      <strong>Nota:</strong> La cámara no funciona en el simulador de Android Studio.
-    </span>
-   </li>
-   <li class="md-two-line">
-    <span class="headline">
-     Autor
-    </span>
-    <span class="supporting">
-    ALVA ORNELAS VALERIA
-    ARELLANO FERIA ULISES JESUS
-    CASARIN HERNANDEZ MIGUEL ANGEL
-    CONTRERAS JACOBO CESAR EDUARDO
-    GONZALEZ ROSETE OMAR JAIR
-    LUNA LUNA FERNANDO YAIR
-    </span>
-   </li>
-   <li class="md-two-line">
-    <span class="headline">
-     Derechos de autor
-    </span>
-    <span class="supporting">
-     &copy; 2024 Gilberto Pacheco Gallegos
-    </span>
-   </li>
-   <li class="md-three-line">
-    <span class="headline">
-     Este software usa la librería para PWA
-    </span>
-    <span class="supporting">
-     Esta obra de Gilberto Pacheco Gallegos está bajo una
-     <a target="_blank" rel="license noreferrer"
-       href="http://creativecommons.org/licenses/by/4.0/">
-      Licencia Creative Commons Atribución 4.0 Internacional</a></span>
-   </li>
-   <li>
-    <a class="md-three-line" target="_blank" rel=”noreferrer”
-      href="https://fonts.google.com/icons">
-     <span class="headline">
-      También usa Material Symbols
-     </span>
-     <span class="supporting">
-      Desarrollada por Google bajo licencia Apache 2.0
-     </span>
-    </a>
-   </li>
-  </ul>
+    <ul class="md-list">
+      <li class="md-two-line">
+        <span class="headline">
+          Título
+        </span>
+        <span class="supporting">
+          Geolocalizacion, Archivos y Cámara con Material Design
+        </span>
+      </li>
+      <li class="md-two-line">
+        <span class="headline">
+          Descripción
+        </span>
+        <span class="supporting">
+          Esta aplicación es un ejemplo de una PWA que usa Material Design y
+          Geolocalización. Permite capturar imágenes y grabar videos desde la cámara del dispositivo.
+        </span>
+      </li>
+      <li class="md-two-line">
+        <span class="headline">
+          Autores
+        </span>
+        <span class="supporting">
+          ALVA ORNELAS VALERIA
+        </span>
+        <span class="supporting">
+          ARELLANO FERIA ULISES JESUS
+        </span>
+        <span class="supporting">
+          CASARIN HERNANDEZ MIGUEL ANGEL
+        </span>
+        <span class="supporting">
+          CONTRERAS JACOBO CESAR EDUARDO
+        </span>
+        <span class="supporting">
+          GONZALEZ ROSETE OMAR JAIR
+        </span>
+        <span class="supporting">
+          LUNA LUNA FERNANDO YAIR
+        </span>
+      </li>
+      <li class="md-two-line">
+        <span class="headline">
+          Derechos de autor
+        </span>
+        <span class="supporting">
+          &copy; 2025 ProRam
+        </span>
+      </li>
+      <li class="md-three-line">
+        <span class="headline">
+          Este software usa la librería para PWA
+        </span>
+        <span class="supporting">
+          Esta obra de Gilberto Pacheco Gallegos está bajo una
+          <a target="_blank" rel="license noreferrer" href="http://creativecommons.org/licenses/by/4.0/">
+            Licencia Creative Commons Atribución 4.0 Internacional</a></span>
+      </li>
+      <li>
+        <a class="md-three-line" target="_blank" rel=”noreferrer” href="https://fonts.google.com/icons">
+          <span class="headline">
+            También usa Material Symbols
+          </span>
+          <span class="supporting">
+            Desarrollada por Google bajo licencia Apache 2.0
+          </span>
+        </a>
+      </li>
+    </ul>
 
- </main>
+  </main>
 
- <nav-bar></nav-bar>
+  <nav-drw></nav-drw>
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const enlaces = document.querySelectorAll(".nav-bar a");
+      const urlActual = window.location.pathname.split("/").pop();
+
+      enlaces.forEach(enlace => {
+        const href = enlace.getAttribute("href");
+        if (href === urlActual) {
+          enlace.classList.add("active");
+        }
+      });
+    });
+  </script>
 
 </body>
 
