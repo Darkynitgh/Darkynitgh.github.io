@@ -12,17 +12,17 @@ export class NavBar extends HTMLElement {
    </a>
 
    <a ${resaltaSiEstasEn(["/archivosycamara.html"])} href="archivosycamara.html">
-   <span class="material-symbols-outlined">
+    <span class="material-symbols-outlined">
 folder_open
 </span>
-    Archivos y Cámara
+    Archivos y camara
    </a>
 
    <a id="navbar" ${resaltaSiEstasEn(["/camara.html"])} href="camara.html">
     <span class="material-symbols-outlined">
 photo_camera
 </span>
-    Cámara
+    Camara
    </a>
 
    <a ${resaltaSiEstasEn(["/ayuda.html"])} href="ayuda.html">

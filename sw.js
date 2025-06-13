@@ -15,12 +15,12 @@
  * conoce como número menor y se cambia cuando se realizan
  * modificaciones menores.
  */
-const VERSION = "1.03"
+const VERSION = "1.05"
 
 /**
  * Nombre de la carpeta de caché.
  */
-const CACHE = "Geolocalización-Cache-" + VERSION
+const CACHE = "GPS-Camera-" + VERSION
 
 /**
  * Archivos requeridos para que la aplicación funcione fuera de
@@ -28,9 +28,10 @@ const CACHE = "Geolocalización-Cache-" + VERSION
  */
 const ARCHIVOS = [
  "ayuda.html",
+ "favicon.ico",
  "index.html",
- "camara.html",
  "archivosycamara.html",
+ "camara.html",
  "site.webmanifest",
  "css/dark-hc.css",
  "css/dark-mc.css",
@@ -54,6 +55,9 @@ const ARCHIVOS = [
  "img/screenshot_vertical.png",
  "js/configura.js",
  "js/nav-bar.js",
+ "js/nav-drw.js",
+ "js/nav-tab-fixed.js",
+ "js/nav-tab-scrollable.js",
  "js/registraServiceWorker.js",
  "lib/css/material-symbols-outlined.css",
  "lib/css/md-cards.css",

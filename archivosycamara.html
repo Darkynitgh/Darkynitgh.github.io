@@ -1,237 +1,60 @@
 <!DOCTYPE html>
 <html lang="es" class="light dark">
+
 <head>
 
-    <meta charset="UTF-8" />
-    <title>Archivos - Geolocalización, Archivos y Cámara</title>
+ <meta charset="UTF-8">
 
-    <script src="js/registraServiceWorker.js"></script>
+ <script src="js/registraServiceWorker.js"></script>
 
-    <meta name="viewport" content="width=device-width" />
-    <meta name="theme-color" content="#fffbfe" />
-    <link rel="icon" sizes="32x32" href="favicon.ico" />
-    <link rel="manifest" href="site.webmanifest" />
-    <script src="ungap/custom-elements.js"></script>
+ <meta name="viewport" content="width=device-width">
+ <meta name="theme-color" content="#fffbfe">
+ <link rel="icon" sizes="32x32" href="favicon.ico">
+ <link rel="manifest" href="site.webmanifest">
+ <script src="ungap/custom-elements.js"></script>
 
-    <script type="module" src="js/configura.js"></script>
-    <link rel="stylesheet" href="css/estilos.css" />
-    <link rel="stylesheet" href="css/transicion_pestanas.css" />
+ <script type="module" src="js/configura.js"></script>
+ <link rel="stylesheet" href="css/estilos.css">
+ <link rel="stylesheet" href="css/transicion_completa.css">
 
-    <!-- Material Symbols para iconos -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" />
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #fffbfe;
-            color: #333;
-            padding: 1rem;
-        }
-
-        header {
-            text-align: center;
-            padding-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        nav.nav-bar {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .nav-bar a {
-            text-decoration: none;
-            color: #444;
-            font-weight: 500;
-            text-align: center;
-            font-size: 0.9rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0.3rem 0.5rem;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-bar a:hover,
-        .nav-bar a.active {
-            color: #5e35b1;
-        }
-
-        .nav-bar a.active::after {
-            content: "";
-            height: 2px;
-            background: #5e35b1;
-            width: 100%;
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-        }
-
-        .material-symbols-rounded {
-            font-variation-settings: 'wght' 400;
-            font-size: 1.6rem;
-        }
-
-        main {
-            max-width: 500px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-            line-height: 1.4;
-            padding: 1rem;
-        }
-
-      
-.file-upload-container {
-    display: flex;
-    flex-direction: column; /* Cambia a columna en móviles */
-    align-items: stretch; /* Ocupa todo el ancho */
-    gap: 8px;
-    background-color: #ba98f7;
-    border-radius: 8px;
-    padding: 12px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-.file-upload-label {
-    font-weight: 600;
-    color: #000000;
-    font-size: 1.15rem;
-    text-align: left; /* Alineación izquierda */
-    width: 100%;
-}
-
-input[type="file"] {
-    width: 100%; /* Ocupa todo el ancho disponible */
-    cursor: pointer;
-    border: 2px solid #9C27B0;
-    border-radius: 6px;
-    padding: 8px;
-    font-size: 0.9rem; /* Tamaño de fuente reducido */
-    font-weight: 600;
-    color: #9C27B0;
-    background-color: #fff;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-        input[type="file"]:hover {
-            background-color: #9C27B0;
-            color: white;
-        }
-
-        .file-name {
-            flex: 1 1 auto;
-            font-family: monospace;
-            font-weight: 400;
-            color: #9C27B0;
-            font-size: 0.9rem;
-            text-align: right;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            user-select: none;
-            min-width: 80px;
-        }
-        /* Estilos para pantallas más grandes (tablets/desktop) */
-@media (min-width: 768px) {
-    .file-upload-container {
-        flex-direction: row; /* Vuelve a fila en pantallas grandes */
-        align-items: center;
-        gap: 12px;
-    }
-    
-    .file-upload-label {
-        flex: 0 0 130px;
-        text-align: right;
-    }
-    
-    input[type="file"] {
-        flex: 1;
-        min-width: 0; /* Permite que se reduzca */
-    }
-}
-    </style>
 </head>
+ <main>
 
+ <title>GPS - Archivos y Cámara</title>
+ <style>
+  html {
+   color-scheme: light dark;
+  }
+ </style>
+</head>
 <body>
-    <header>
-        <h1>Archivos</h1>
+ <h1>Archivos y Cámara</h1>
+ <p>
+  <label class="md-filled-text-field">
+   
+   <span>Foto de Móvil</span><br>
+   <input type="file"
+     accept="image/*"
+     capture="camera">
+  </label>
+ </p>
+ <p>
+  <label class="md-filled-text-field">
+   <span>Video Movil</span><br>
+   <input type="file"
+     accept="video/*"
+     capture="">
+  </label>
+ </p>
+ <p>
+  <label class="md-filled-text-field">
+   <span>Archivo</span><br>
+   <input type="file">
+  </label>
+ </p>
 
-        <nav class="nav-bar">
-            <a href="index.html">
-                <span class="material-symbols-rounded">home</span>
-                Inicio
-            </a>
-            <a href="archivosycamara.html" class="active">
-                <span class="material-symbols-rounded">folder</span>
-                Archivos
-            </a>
-            <a href="camara.html">
-                <span class="material-symbols-rounded">camera_alt</span>
-                Cámara
-            </a>
-            <a href="ayuda.html">
-                <span class="material-symbols-rounded">help</span>
-                Ayuda
-            </a>
-        </nav>
-
-
-    </header>
-
-    <main>
-        <div class="file-upload-container">
-            <label class="file-upload-label" for="fotoMovil">Foto de Móvil</label>
-            <input type="file" id="fotoMovil" accept="image/*" capture="camera" />
-        </div>
-
-        <div class="file-upload-container">
-            <label class="file-upload-label" for="videoMovil">Video de Móvil</label>
-            <input type="file" id="videoMovil" accept="video/*" capture />
-        </div>
-
-        <div class="file-upload-container">
-            <label class="file-upload-label" for="archivoGenerico">Archivo</label>
-            <input type="file" id="archivoGenerico" />
-        </div>
-    </main>
-
-    <script>
-        function actualizarNombreArchivo(inputId, nameSpanId) {
-            const input = document.getElementById(inputId);
-            const nameSpan = document.getElementById(nameSpanId);
-
-            input.addEventListener('change', () => {
-                const files = input.files;
-                if (files.length > 0) {
-                    nameSpan.textContent = files[0].name;
-                } else {
-                    nameSpan.textContent = 'Ningún archivo seleccionado';
-                }
-            });
-        }
-
-        actualizarNombreArchivo('fotoMovil', 'fotoMovilName');
-        actualizarNombreArchivo('videoMovil', 'videoMovilName');
-        actualizarNombreArchivo('archivoGenerico', 'archivoGenericoName');
-    </script>
-
+ <nav-bar></nav-bar>
+</main>
 </body>
 
 </html>
