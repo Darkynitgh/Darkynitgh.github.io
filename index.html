@@ -46,7 +46,16 @@
  </main>
 
  <nav-bar></nav-bar>
-
+<script>
+  navigator.geolocation.
+   watchPosition(p => {
+    latitud.value =
+     p.coords.latitude
+    longitud.value =
+     p.coords.longitude
+   });
+</script>
+ 
 </body>
 
 </html>
