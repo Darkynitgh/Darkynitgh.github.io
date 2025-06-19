@@ -4,7 +4,7 @@
 <head>
 
  <meta charset="UTF-8">
- <title>GPS - Cámara</title>
+ <title>GPS - Geolocalización, Archivos y Cámara</title>
 
  <script src="js/registraServiceWorker.js"></script>
 
@@ -16,8 +16,8 @@
 
  <script type="module" src="js/configura.js"></script>
  <link rel="stylesheet" href="css/estilos.css">
- <link rel="stylesheet" href="css/transicion_completa.css">
-
+ <link rel="stylesheet" href="css/transicion_pestanas.css">
+ <link rel="expect" blocking="render" href="#navtabfixed">
 </head>
 
 <body>
@@ -29,18 +29,15 @@
  </md-top-app-bar>
 
  <h1 id="h1Headline">Cámara</h1>
- 
+
+
  <main>
-
-
-</head>
-<body>
-
- <p>
+    <p>
   Para grabar o capturar imagen,
   cliquea
   <strong>Inicia</strong>.
  </p>
+
  <p>
   Para grabar por 5 segundos
   cliquea
@@ -49,71 +46,101 @@
   <strong>Para</strong> para
   detener.
  </p>
+
  <p>
   Para capturar una imagen de la
   cámara, cliquea
   <strong>Captura</strong>.
  </p>
+
  <menu style="display: flex;
    flex-wrap: wrap;
    list-style: none;">
-  <p>
-   <button type="button"
-     onclick="inicia()" class="md-filled-button">
+  <li>
+   <button class="md-outline-button" type="button"
+     onclick="inicia()">
     Inicia
    </button>
-  
-   <button type="button"
-     onclick="graba()" class="md-outline-button">
+  </li>
+  &nbsp;
+  <li>
+   <button class="md-outline-button" type="button"
+     onclick="graba()">
     Graba
    </button>
-  
-   <button type="button"
-     onclick="para();" class="md-outline-button">
+  </li>
+  &nbsp;
+  <li>
+   <button class="md-outline-button" type="button"
+     onclick="para();">
     Para
    </button>
- 
-   <button type="button"
-     onclick="captura()" class="md-outline-button">
+  </li>
+  &nbsp;
+  <li>
+   <button class="md-outline-button" type="button"
+     onclick="captura()">
     Captura
    </button>
-  </p>
+  </li>
  </menu>
+
  <section
    style="display: inline-block;
      vertical-align: top;">
+
   <h1>Preview</h1>
+
   <video id="preview" width="160"
     height="120" autoplay
     muted></video>
+
  </section>
+
  <section
    style="display: inline-block;
      vertical-align: top;">
+
   <h1>Recording</h1>
+
   <video id="recording" width="160"
     height="120" controls></video>
+
   <p>
    <a id="descarga">Descarga</a>
   </p>
+
   <div id="mensajes"></div>
+
  </section>
+
  <section
    style="display: inline-block;
      vertical-align: top;">
+
   <h1>Imagen</h1>
+
   <canvas id="canvas" width="160"
     height="120"></canvas>
+
   <p>
    <a id="descargaImagen">
     Descarga</a>
   </p>
+
  </section>
+
+ </main>
+ 
  <script>
+
   let stream = null
+
   let TIEMPO_DE_GRABACION = 5000
+
   var context =
    canvas.getContext('2d')
+
   async function inicia() {
    try {
     stream = await navigator
@@ -133,6 +160,7 @@
     log(e.message)
    }
   }
+
   async function graba() {
    try {
     const recordedChunks =
@@ -147,6 +175,7 @@
     descarga.href = recording.src
     descarga.download =
      "RecordedVideo.webm"
+
     log("Exitosamente grabados "
      + recordedBlob.size
      + " bytes de "
@@ -156,9 +185,11 @@
     log(e.message)
    }
   }
+
   function para() {
    detiene(preview.srcObject)
   }
+
   function captura() {
    context.drawImage(preview,
     0, 0, 160, 120)
@@ -167,6 +198,7 @@
    descargaImagen.download =
     "imagen.jpg"
   }
+
   function grabaClip(stream,
    milisegundos) {
    let recorder =
@@ -191,30 +223,32 @@
       === "recording"
       && recorder.stop()
      )
+
    return Promise.all([
     detenido,
     grabado
    ])
     .then(() => data)
   }
+
   function detiene(stream) {
    stream.getTracks().forEach(
     track => track.stop())
   }
+
   function log(msg) {
    mensajes.innerHTML +=
     msg + "<br>"
   }
+
   function espera(milisegundos) {
    return new Promise(
     resolve => setTimeout(
      resolve, milisegundos))
   }
+
  </script>
- </main>
-
  <nav-bar></nav-bar>
-
 </body>
 
 </html>

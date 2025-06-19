@@ -4,7 +4,7 @@
 <head>
 
  <meta charset="UTF-8">
- <title>Archivos - Geolocalización, Archivos y Cámara</title>
+ <title>GPS - Geolocalización, Archivos y Cámara</title>
 
  <script src="js/registraServiceWorker.js"></script>
 
@@ -30,35 +30,31 @@
 
  <h1 id="h1Headline">Archivos y camara</h1>
 
-</head>
-<body>
- <p>
-  <span>Foto de Móvil</span><br>
-  <label class="md-filled-text-field">
-   <input type="file"
-     accept="image/*"
-     capture="camera">
-  </label>
- </p>
- <p>
-   <span>Video Movil</span><br>
-  <label class="md-filled-text-field">
-  
-   <input type="file"
-     accept="video/*"
-     capture="">
-  </label>
- </p>
- <p>
-    <span>Archivo</span><br>
-  <label class="md-filled-text-field">
- 
-   <input type="file">
-  </label>
- </p>
 
- <nav-bar></nav-bar>
+<main>
+    <p>
+        <label class="md-filled-text-field float">
+            <input type="file" accept="image/*" capture="camera">
+            <span>Foto de Móvil</span>
+        </label>
+    </p>
+
+    <p>
+        <label class="md-filled-text-field float">
+            <input type="file" accept="video/*" capture="">
+            <span>Video de Móvil</span>
+        </label>
+    </p>
+
+    <p>
+        <label class="md-filled-text-field float">
+            <input type="file">
+            <span>Archivo</span>
+        </label>
+    </p>
 </main>
+ <nav-bar></nav-bar>
+
 </body>
 
 </html>
